@@ -120,12 +120,21 @@
             "firebaseProject": "plutus-fts",
             "firebaseHostingSite": "plutus-fts"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "plutus-fts",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
