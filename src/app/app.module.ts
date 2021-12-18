@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 
@@ -16,12 +14,13 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 
+import { CoreModule } from './core/core.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    CoreModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
