@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
+import { AuthEffects } from './store/effects/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { CoreModule } from './core/core.module';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   bootstrap: [AppComponent],
 })
