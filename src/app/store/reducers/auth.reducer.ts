@@ -1,9 +1,9 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { User } from 'src/app/core/models/user';
+import { IUser } from 'src/app/core/models/user.model';
 import * as authActions from '../actions/auth.actions';
 
 export interface AuthState {
-  user: User | null;
+  user: IUser | null;
 }
 
 export const initialState: AuthState = {

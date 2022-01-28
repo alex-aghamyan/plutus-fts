@@ -9,7 +9,7 @@ import {
 } from '@angular/fire/firestore';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { EMPTY, Observable, switchMap } from 'rxjs';
-import { User } from '../models/user';
+import { IUser } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,13 +35,13 @@ export class AuthService {
     await this.setUser(response.user);
   }
 
-  async setUser(user: User) {
+  async setUser(user: IUser) {
     const userRef: DocumentReference = doc(
       this.firestore,
       `users/${user.uid || ''}`
     );
 
-    const userData: User = {
+    const userData: IUser = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
