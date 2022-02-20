@@ -4,10 +4,12 @@ import * as authActions from '../actions/auth.actions';
 
 export interface AuthState {
   user: IUser | null;
+  authError: Error | null;
 }
 
 export const initialState: AuthState = {
   user: null,
+  authError: null
 };
 
 export const authFeature = createFeature({
