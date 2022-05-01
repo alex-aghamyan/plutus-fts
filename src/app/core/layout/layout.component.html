@@ -1,1 +1,17 @@
-<p>layout works!</p>
+<ng-container *ngIf="layout$ | async as layout">
+  <nz-layout>
+    <nz-sider *ngIf="!layout.isMobile" nzTheme="light">
+      <!-- TODO: add user information -->
+      <!-- TODO: add menu -->
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <nz-footer *ngIf="layout.isMobile">
+        <!-- TODO: add menu -->
+        <!-- TODO: add action buttons -->
+      </nz-footer>
+    </nz-layout>
+  </nz-layout>
+</ng-container>
