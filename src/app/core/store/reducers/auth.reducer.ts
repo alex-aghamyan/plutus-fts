@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { IUser } from 'src/app/core/models/user.model';
+import { IUser } from '../../models/user.model';
 import * as authActions from '../actions/auth.actions';
 
 export interface AuthState {
