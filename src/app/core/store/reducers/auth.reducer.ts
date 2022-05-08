@@ -1,38 +1,31 @@
+import { AuthError } from '@angular/fire/auth';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { IUser } from '../../models/user.model';
 import * as authActions from '../actions/auth.actions';
 
 export interface AuthState {
   user: IUser | null;
-  authError: Error | null;
+  error: AuthError | null;
 }
 
 export const initialState: AuthState = {
   user: null,
-  authError: null
+  error: null,
 };
 
 export const authFeature = createFeature({
   name: 'auth',
   reducer: createReducer(
     initialState,
-    on(authActions.loginSuccess, (state, action) => ({
+    on(authActions.signInSuccess, (state, action) => ({
       ...state,
-      user: {
-        uid: action.data.uid,
-        displayName: action.data.displayName,
-        email: action.data.email,
-        photoURL: action.data.photoURL,
-      },
+      user: action.user,
+      error: null,
     })),
-    on(authActions.loginFailure, (state) => ({
+    on(authActions.signInFailure, (state, action) => ({
       ...state,
-      user: {
-        uid: null,
-        displayName: null,
-        email: null,
-        photoURL: null,
-      },
+      user: null,
+      error: action.error,
     }))
   ),
 });
