@@ -10,7 +10,9 @@
       </nz-content>
       <nz-footer *ngIf="layout.isMobile">
         <!-- TODO: add menu -->
-        <!-- TODO: add action buttons -->
+        <fts-footer-actions
+          (footerAction)="handleFooterAction($event)"
+        ></fts-footer-actions>
       </nz-footer>
     </nz-layout>
   </nz-layout>
