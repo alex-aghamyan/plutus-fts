@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { LayoutService } from '../../services/layout.service';
-import { checkLayout, setLayoutIsMobile } from '../actions/layout.actions';
+import * as layoutActions from '../actions/layout.actions';
 
 @Injectable()
 export class LayoutEffects {
-  layout$ = createEffect(() =>
+  setLayoutType$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(checkLayout),
+      ofType(layoutActions.checkLayout),
       switchMap(() =>
         this.layoutService
           .observeHandset()
           .pipe(
-            map((layout) => setLayoutIsMobile({ isMobile: layout.matches }))
+            map((layout) =>
+              layoutActions.setLayoutIsMobile({ isMobile: layout.matches })
+            )
           )
       )
     )
