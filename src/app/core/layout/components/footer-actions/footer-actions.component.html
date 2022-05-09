@@ -1,0 +1,11 @@
+<nz-button-group>
+  <button nz-button (click)="emitAction('toggleMenu')">
+    <i nz-icon nzType="up-circle" nzTheme="twotone"></i>
+  </button>
+  <button nz-button (click)="emitAction('addIncomeOrExpense')">
+    <i nz-icon nzType="plus-circle" nzTheme="twotone"></i>
+  </button>
+  <button nz-button (click)="emitAction('openProfile')">
+    <nz-avatar nzSize="small" nzIcon="user" [nzSrc]="userPhotoURL"></nz-avatar>
+  </button>
+</nz-button-group>
