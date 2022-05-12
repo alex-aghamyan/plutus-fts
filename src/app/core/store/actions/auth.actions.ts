@@ -1,14 +1,19 @@
+import { AuthError } from '@angular/fire/auth';
 import { createAction, props } from '@ngrx/store';
 import { IUser } from '../../models/user.model';
 
-export const loginAttempt = createAction('[Auth] Login Attempt');
+export const signInAttempt = createAction('[Auth] Sign In Attempt');
 
-export const loginSuccess = createAction(
-  '[Auth] Login Success',
-  props<{ data: IUser }>()
+export const signInSuccess = createAction(
+  '[Auth] Sign In Success',
+  props<{ user: IUser | null }>()
 );
 
-export const loginFailure = createAction(
-  '[Auth] Login Failure',
-  props<{ error: any }>()
+export const signInFailure = createAction(
+  '[Auth] Sign In Failure',
+  props<{ error: AuthError }>()
+);
+
+export const checkIsUserSignedIn = createAction(
+  '[Auth] Check Whether User Is Signed In'
 );

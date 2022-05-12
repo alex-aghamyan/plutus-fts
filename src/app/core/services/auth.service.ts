@@ -1,53 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Auth, authState, signInWithPopup } from '@angular/fire/auth';
 import {
-  doc,
-  docData,
-  DocumentReference,
-  Firestore,
-  setDoc,
-} from '@angular/fire/firestore';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { EMPTY, Observable, switchMap } from 'rxjs';
+  Auth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  user,
+  User,
+} from '@angular/fire/auth';
+import { from, map, Observable } from 'rxjs';
 import { IUser } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private firestore: Firestore, private auth: Auth) {}
+  constructor(private auth: Auth) {}
 
-  getUser(): Observable<any> {
-    return authState(this.auth).pipe(
-      switchMap((user) => {
+  private mapRawUserData(rawUserData: User): IUser {
+    return {
+      uid: rawUserData.uid,
+      email: rawUserData.email,
+      displayName: rawUserData.displayName,
+      photoURL: rawUserData.photoURL,
+    };
+  }
+
+  getSignedInUser(): Observable<IUser | null> {
+    return user(this.auth).pipe(
+      map((user) => {
         if (!user) {
-          return EMPTY;
+          return null;
         }
 
-        return docData(doc(this.firestore, `users/${user?.uid}`));
+        return this.mapRawUserData(user);
       })
     );
   }
 
-  async signInWithGoogle() {
+  signInWithGoogle(): Observable<IUser> {
     const provider = new GoogleAuthProvider();
-    const response = await signInWithPopup(this.auth, provider);
-    await this.setUser(response.user);
-  }
-
-  async setUser(user: IUser) {
-    const userRef: DocumentReference = doc(
-      this.firestore,
-      `users/${user.uid || ''}`
+    
+    return from(signInWithPopup(this.auth, provider)).pipe(
+      map((userCredential) => this.mapRawUserData(userCredential.user))
     );
-
-    const userData: IUser = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    };
-
-    await setDoc(userRef, userData, { merge: true });
   }
 }
