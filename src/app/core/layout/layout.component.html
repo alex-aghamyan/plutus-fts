@@ -1,1 +1,18 @@
-<p>layout works!</p>
+<ng-container *ngIf="layout$ | async as layout">
+  <nz-layout>
+    <nz-sider *ngIf="!layout.isMobile" nzTheme="light">
+      <fts-main-menu></fts-main-menu>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <nz-footer *ngIf="layout.isMobile">
+        <fts-main-menu *ngIf="openMenu"></fts-main-menu>
+        <fts-footer-actions
+          (footerAction)="handleFooterAction($event)"
+        ></fts-footer-actions>
+      </nz-footer>
+    </nz-layout>
+  </nz-layout>
+</ng-container>
