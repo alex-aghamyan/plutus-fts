@@ -3,5 +3,5 @@ import { authFeature } from '../reducers/auth.reducer';
 
 export const selectUserViewModel = createSelector(
   authFeature.selectUser,
-  (user) => ({ user })
+  (user) => (user)
 );
