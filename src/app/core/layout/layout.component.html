@@ -16,6 +16,7 @@
         <fts-main-menu *ngIf="openMenu"></fts-main-menu>
         <fts-footer-actions
           (footerAction)="handleFooterAction($event)"
+          [userPhotoURL]="vm.user.photoURL"
         ></fts-footer-actions>
       </nz-footer>
     </nz-layout>

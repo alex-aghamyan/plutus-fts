@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FooterAction } from '../models/footer-actions.model';
@@ -19,7 +20,7 @@ export class LayoutComponent implements OnInit {
     selectInitialViewModel
   );
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(checkLayout());
@@ -48,5 +49,7 @@ export class LayoutComponent implements OnInit {
 
   addIncomeOrExpense(): void {}
 
-  openProfile(): void {}
+  openProfile(): void {
+    void this.router.navigate(['profile']);
+  }
 }
