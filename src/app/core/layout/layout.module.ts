@@ -11,9 +11,15 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { LayoutComponent } from './layout.component';
 import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-info.component';
 
 @NgModule({
-  declarations: [LayoutComponent, FooterActionsComponent, MainMenuComponent],
+  declarations: [
+    LayoutComponent,
+    FooterActionsComponent,
+    MainMenuComponent,
+    SiderUserInfoComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

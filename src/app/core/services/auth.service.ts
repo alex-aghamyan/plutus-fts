@@ -18,9 +18,9 @@ export class AuthService {
   private mapRawUserData(rawUserData: User): IUser {
     return {
       uid: rawUserData.uid,
-      email: rawUserData.email,
-      displayName: rawUserData.displayName,
-      photoURL: rawUserData.photoURL,
+      email: rawUserData.email ?? '',
+      displayName: rawUserData.displayName ?? 'no name',
+      photoURL: rawUserData.photoURL ?? '',
     };
   }
 
