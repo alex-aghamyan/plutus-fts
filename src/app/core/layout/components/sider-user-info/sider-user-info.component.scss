@@ -1,0 +1,27 @@
+.user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+
+  &:active {
+    background-color: #e6f7ff;
+  }
+}
+
+.user-name {
+  font-size: larger;
+  width: calc(100% - 40px);
+  transition: color 300ms ease;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.active-link {
+  color: #1890ff;
+  background-color: #e6f7ff;
+}

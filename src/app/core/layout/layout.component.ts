@@ -2,9 +2,10 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FooterAction } from '../models/footer-actions.model';
+import { IInitialViewModel } from '../models/initial-view-model.model';
+import { checkIsUserSignedIn } from '../store/actions/auth.actions';
 import { checkLayout } from '../store/actions/layout.actions';
-import { LayoutState } from '../store/reducers/layout.reducer';
-import { selectLayout } from '../store/selectors/layout.selectors';
+import { selectInitialViewModel } from '../store/selectors/initial.selectors';
 
 @Component({
   selector: 'fts-layout',
@@ -14,12 +15,15 @@ import { selectLayout } from '../store/selectors/layout.selectors';
 })
 export class LayoutComponent implements OnInit {
   openMenu = false;
-  layout$: Observable<LayoutState> = this.store.select(selectLayout);
+  initialViewModel$: Observable<IInitialViewModel> = this.store.select(
+    selectInitialViewModel
+  );
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(checkLayout());
+    this.store.dispatch(checkIsUserSignedIn());
   }
 
   handleFooterAction(action: FooterAction): void {
