@@ -1,0 +1,33 @@
+<ng-container *ngIf="layout$ | async as layout">
+  <section class="container" [class.mobile-padding]="layout.isMobile">
+    <h2 nz-typography>Plutus - your financial life all in one place</h2>
+    <p nz-typography class="description">
+      Money doesn't have to be messy. The Plutus finance tracking app will help
+      you organize your finances, get a full view so you know where to save and
+      see where money is coming in and how much is going out from your accounts.
+    </p>
+    <button
+      (click)="signIn()"
+      [disabled]="!userAgreementControl.value"
+      nz-button
+      nzSize="large"
+      class="sign-in-button"
+    >
+      <img src="../../../assets/icons/google-icon.svg" />
+      Sing in with Google
+    </button>
+    <section>
+      <label [formControl]="userAgreementControl" nz-checkbox></label>
+      I read the
+      <button
+        (click)="openWarningDialog()"
+        nz-button
+        nzType="link"
+        class="warning-button"
+      >
+        <span nz-typography nzType="warning">Usage Warning</span>
+      </button>
+      and agree to use this app.
+    </section>
+  </section>
+</ng-container>
