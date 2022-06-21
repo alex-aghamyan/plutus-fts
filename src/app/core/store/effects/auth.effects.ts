@@ -12,9 +12,19 @@ export class AuthEffects {
       ofType(authActions.signInAttempt),
       switchMap(() =>
         this.authService.signInWithGoogle().pipe(
-          map((user) => authActions.signInSuccess({ user: user })),
+          map((user) =>
+            authActions.signInSuccess({
+              user: user,
+              messageToShow: 'Successfully signed in!',
+            })
+          ),
           catchError((error: AuthError) =>
-            of(authActions.signInFailure({ error: error }))
+            of(
+              authActions.signInFailure({
+                error: error,
+                messageToShow: error.code,
+              })
+            )
           )
         )
       )
@@ -25,9 +35,14 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(authActions.checkIsUserSignedIn),
       switchMap(() =>
-        this.authService
-          .getSignedInUser()
-          .pipe(map((user) => authActions.signInSuccess({ user: user })))
+        this.authService.getSignedInUser().pipe(
+          map((user) =>
+            authActions.signInSuccess({
+              user: user,
+              messageToShow: 'Successfully signed in!',
+            })
+          )
+        )
       )
     );
   });
