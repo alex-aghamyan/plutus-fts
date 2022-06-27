@@ -1,7 +1,7 @@
 import { AuthError } from '@angular/fire/auth';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { IUser } from '../../models/user.model';
-import * as authActions from '../actions/auth.actions';
+import { authActions } from '../actions/auth.actions';
 
 export interface AuthState {
   user: IUser | null;

@@ -1,8 +1,9 @@
-import { createAction, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-export const checkLayout = createAction('[Layout] Check Layout');
-
-export const setLayoutIsMobile = createAction(
-  '[Layout] Set Layout',
-  props<{ isMobile: boolean }>()
-);
+export const layoutActions = createActionGroup({
+  source: 'Layout',
+  events: {
+    'Check Layout': emptyProps(),
+    'Set Layout As Mobile': props<{ isMobile: boolean }>(),
+  },
+});
