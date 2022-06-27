@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
-import { signInAttempt } from 'src/app/core/store/actions/auth.actions';
+import { authActions } from 'src/app/core/store/actions/auth.actions';
 import { LayoutState } from 'src/app/core/store/reducers/layout.reducer';
 import { selectLayout } from 'src/app/core/store/selectors/layout.selectors';
 
@@ -48,6 +48,6 @@ export class SignInComponent implements OnInit {
   }
 
   signIn(): void {
-    this.store.dispatch(signInAttempt());
+    this.store.dispatch(authActions.signInAttempt());
   }
 }

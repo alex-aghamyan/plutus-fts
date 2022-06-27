@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FooterAction } from '../models/footer-actions.model';
 import { IInitialViewModel } from '../models/initial-view-model.model';
-import { checkIsUserSignedIn } from '../store/actions/auth.actions';
-import { checkLayout } from '../store/actions/layout.actions';
+import { authActions } from '../store/actions/auth.actions';
+import { layoutActions } from '../store/actions/layout.actions';
 import { selectInitialViewModel } from '../store/selectors/initial.selectors';
 
 @Component({
@@ -23,8 +23,8 @@ export class LayoutComponent implements OnInit {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    this.store.dispatch(checkLayout());
-    this.store.dispatch(checkIsUserSignedIn());
+    this.store.dispatch(layoutActions.checkLayout());
+    this.store.dispatch(authActions.checkIsUserSignedIn());
   }
 
   handleFooterAction(action: FooterAction): void {

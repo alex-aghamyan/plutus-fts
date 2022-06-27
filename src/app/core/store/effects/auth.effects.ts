@@ -3,7 +3,7 @@ import { AuthError } from '@angular/fire/auth';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
-import * as authActions from '../actions/auth.actions';
+import { authActions } from '../actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {
