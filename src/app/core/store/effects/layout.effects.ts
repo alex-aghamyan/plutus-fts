@@ -7,7 +7,7 @@ import { layoutActions } from '../actions/layout.actions';
 
 @Injectable()
 export class LayoutEffects {
-  setLayoutType$ = createEffect(() => {
+  watchIsMobileLayout$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(appActions.loadApp),
       switchMap(() =>
@@ -15,7 +15,7 @@ export class LayoutEffects {
           .observeHandset()
           .pipe(
             map((layout) =>
-              layoutActions.setLayoutAsMobile({ isMobile: layout.matches })
+              layoutActions.setIsMobileLayout({ isMobile: layout.matches })
             )
           )
       )

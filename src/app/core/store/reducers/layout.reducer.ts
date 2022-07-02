@@ -14,7 +14,7 @@ export const layoutFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      layoutActions.setLayoutAsMobile,
+      layoutActions.setIsMobileLayout,
       (state, action): LayoutState => ({
         ...state,
         isMobile: action.isMobile,
