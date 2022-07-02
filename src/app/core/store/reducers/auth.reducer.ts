@@ -17,15 +17,21 @@ export const authFeature = createFeature({
   name: 'auth',
   reducer: createReducer(
     initialState,
-    on(authActions.signInSuccess, (state, action) => ({
-      ...state,
-      user: action.user,
-      error: null,
-    })),
-    on(authActions.signInFailure, (state, action) => ({
-      ...state,
-      user: null,
-      error: action.error,
-    }))
+    on(
+      authActions.signInSuccess,
+      (state, action): AuthState => ({
+        ...state,
+        user: action.user,
+        error: null,
+      })
+    ),
+    on(
+      authActions.signInFailure,
+      (state, action): AuthState => ({
+        ...state,
+        user: null,
+        error: action.error,
+      })
+    )
   ),
 });
