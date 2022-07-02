@@ -8,8 +8,8 @@ import { appActions } from '../actions/app.actions';
 
 @Injectable()
 export class AuthEffects {
-  signIn$ = createEffect(() =>
-    this.actions$.pipe(
+  signIn$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(authActions.signInAttempt),
       switchMap(() =>
         this.authService.signInWithGoogle().pipe(
@@ -29,8 +29,8 @@ export class AuthEffects {
           )
         )
       )
-    )
-  );
+    );
+  });
 
   setUserIfExists$ = createEffect(() => {
     return this.actions$.pipe(

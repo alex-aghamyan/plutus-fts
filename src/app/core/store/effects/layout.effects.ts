@@ -7,8 +7,8 @@ import { layoutActions } from '../actions/layout.actions';
 
 @Injectable()
 export class LayoutEffects {
-  setLayoutType$ = createEffect(() =>
-    this.actions$.pipe(
+  setLayoutType$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(appActions.loadApp),
       switchMap(() =>
         this.layoutService
@@ -19,8 +19,8 @@ export class LayoutEffects {
             )
           )
       )
-    )
-  );
+    );
+  });
 
   constructor(
     private actions$: Actions,
