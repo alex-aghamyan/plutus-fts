@@ -4,6 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { authActions } from '../actions/auth.actions';
+import { appActions } from '../actions/app.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -33,7 +34,7 @@ export class AuthEffects {
 
   setUserIfExists$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(authActions.checkIsUserSignedIn),
+      ofType(appActions.loadApp),
       switchMap(() =>
         this.authService.getSignedInUser().pipe(
           map((user) =>
