@@ -1,0 +1,24 @@
+.user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.margin-none {
+  margin-bottom: 0;
+}
+
+.name-edit {
+  font-size: medium;
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+nz-select {
+  width: 9.5rem;
+}
