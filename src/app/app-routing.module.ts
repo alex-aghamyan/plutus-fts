@@ -9,6 +9,11 @@ const routes: Routes = [
     path: 'sign-in',
     component: SignInComponent,
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./features/profile/profile.module').then((m) => m.ProfileModule),
+    title: 'Profile',
+  },
 ];
 
 @NgModule({

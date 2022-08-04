@@ -1,0 +1,46 @@
+<ng-container *ngIf="user$ | async as user">
+  <nz-divider [nzText]="userDetails" nzOrientation="left">
+    <ng-template #userDetails>
+      <section class="user-details">
+        <nz-avatar
+          [nzSrc]="user.photoURL"
+          [nzSize]="72"
+          nzIcon="user"
+        ></nz-avatar>
+        <h3 nz-typography class="margin-none">{{ user.displayName }}</h3>
+      </section>
+    </ng-template>
+  </nz-divider>
+
+  <section class="edit-profile">
+    <div>
+      <h5 nz-typography>Display name:</h5>
+      <span
+        nz-typography
+        [nzContent]="user.displayName"
+        class="name-edit"
+      ></span>
+    </div>
+
+    <div>
+      <h5 nz-typography>Change the photo:</h5>
+      <button nz-button>
+        <label for="upload-button">
+          <input hidden id="upload-button" type="file" />
+          <i nz-icon nzType="upload"></i>
+          Upload
+        </label>
+      </button>
+    </div>
+
+    <div>
+      <h5 nz-typography>Preferred currency:</h5>
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzNotFoundContent="No results"
+        nzPlaceHolder="Select a currency"
+      ></nz-select>
+    </div>
+  </section>
+</ng-container>
