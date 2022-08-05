@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../modules/shared.module';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -22,6 +23,7 @@ import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule,
     NzLayoutModule,
     NzButtonModule,

@@ -1,4 +1,4 @@
-<ng-container *ngIf="user$ | async as user">
+<ng-container *ftsLet="user$ | async as user">
   <nz-divider [nzText]="userDetails" nzOrientation="left">
     <ng-template #userDetails>
       <section class="user-details">
