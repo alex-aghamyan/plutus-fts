@@ -2,12 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../modules/shared.module';
-
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NgZorroModule } from '../modules/ng-zorro.module';
 
 import { LayoutComponent } from './layout.component';
 import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
@@ -21,16 +16,7 @@ import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-
     MainMenuComponent,
     SiderUserInfoComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule,
-    NzLayoutModule,
-    NzButtonModule,
-    NzIconModule,
-    NzMenuModule,
-    NzAvatarModule,
-  ],
+  imports: [CommonModule, SharedModule, RouterModule, NgZorroModule],
   exports: [LayoutComponent],
 })
 export class LayoutModule {}
