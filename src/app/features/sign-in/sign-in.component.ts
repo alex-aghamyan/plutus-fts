@@ -10,7 +10,7 @@ import { selectLayout } from 'src/app/core/store/selectors/layout.selectors';
 @Component({
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
   layout$: Observable<LayoutState> = this.store.select(selectLayout);
