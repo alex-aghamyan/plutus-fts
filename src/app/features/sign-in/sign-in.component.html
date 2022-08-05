@@ -1,4 +1,4 @@
-<ng-container *ngIf="layout$ | async as layout">
+<ng-container *ftsLet="layout$ | async as layout">
   <section class="container" [class.mobile-padding]="layout.isMobile">
     <h2 nz-typography>Plutus - your financial life all in one place</h2>
     <p nz-typography class="description">
