@@ -5,7 +5,7 @@ export interface LayoutState {
   isMobile: boolean;
 }
 
-export const initialState: LayoutState = {
+const initialState: LayoutState = {
   isMobile: false,
 };
 
