@@ -21,7 +21,13 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@fts-models": ["src/app/core/models"],
+      "@fts-modules": ["src/app/core/modules"],
+      "@fts-services": ["src/app/core/services"],
+      "@fts-store/*": ["src/app/core/store/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
