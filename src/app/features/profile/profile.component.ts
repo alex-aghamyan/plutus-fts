@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectUserViewModel } from '../../core/store/selectors/auth.selectors';
+import { selectUserViewModel } from '@fts-store/selectors';
 
 @Component({
   selector: 'fts-profile',

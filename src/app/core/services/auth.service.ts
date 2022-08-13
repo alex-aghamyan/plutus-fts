@@ -7,7 +7,7 @@ import {
   User,
 } from '@angular/fire/auth';
 import { from, map, Observable } from 'rxjs';
-import { IUser } from '../models/user.model';
+import { IUser } from '@fts-models';
 
 @Injectable({
   providedIn: 'root',

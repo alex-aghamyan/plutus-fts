@@ -1,7 +1,7 @@
 import { AuthError } from '@angular/fire/auth';
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { IUser } from '../../models/user.model';
-import { authActions } from '../actions/auth.actions';
+import { IUser } from '@fts-models';
+import { authActions } from '@fts-store/actions';
 
 export interface AuthState {
   user: IUser | null;

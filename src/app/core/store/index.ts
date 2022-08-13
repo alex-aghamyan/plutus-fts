@@ -1,6 +1,10 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { authFeature, AuthState } from './reducers/auth.reducer';
-import { layoutFeature, LayoutState } from './reducers/layout.reducer';
+import {
+  authFeature,
+  AuthState,
+  layoutFeature,
+  LayoutState,
+} from '@fts-store/reducers';
 
 export interface AppState {
   [authFeature.name]: AuthState;

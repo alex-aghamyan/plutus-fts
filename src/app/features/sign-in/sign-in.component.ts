@@ -3,9 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
-import { authActions } from 'src/app/core/store/actions/auth.actions';
-import { LayoutState } from 'src/app/core/store/reducers/layout.reducer';
-import { selectLayout } from 'src/app/core/store/selectors/layout.selectors';
+import { authActions } from '@fts-store/actions';
+import { LayoutState } from '@fts-store/reducers';
+import { selectLayout } from '@fts-store/selectors';
 
 @Component({
   templateUrl: './sign-in.component.html',

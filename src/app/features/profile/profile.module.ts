@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from 'src/app/core/modules/shared.module';
-import { NgZorroModule } from 'src/app/core/modules/ng-zorro.module';
+import { SharedModule } from '@fts-modules';
+import { NgZorroModule } from '@fts-modules';
 
 import { ProfileComponent } from './profile.component';
 
