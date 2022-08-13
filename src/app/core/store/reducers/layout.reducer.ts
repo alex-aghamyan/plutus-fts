@@ -1,11 +1,11 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { layoutActions } from '../actions/layout.actions';
+import { layoutActions } from '@fts-store/actions';
 
 export interface LayoutState {
   isMobile: boolean;
 }
 
-export const initialState: LayoutState = {
+const initialState: LayoutState = {
   isMobile: false,
 };
 

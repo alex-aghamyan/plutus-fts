@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
-import { authActions } from '../actions/auth.actions';
+import { authActions } from '@fts-store/actions';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable()

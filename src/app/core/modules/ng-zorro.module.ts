@@ -10,6 +10,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   exports: [
@@ -23,6 +24,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzTypographyModule,
     NzSelectModule,
     NzDividerModule,
+    NzMessageModule,
   ],
 })
 export class NgZorroModule {}

@@ -1,6 +1,6 @@
 import { AuthError } from '@angular/fire/auth';
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { IUser } from '../../models/user.model';
+import { IUser } from '@fts-models';
 
 export const authActions = createActionGroup({
   source: 'Auth',

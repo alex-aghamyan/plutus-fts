@@ -1,14 +1,14 @@
 import { AuthError } from '@angular/fire/auth';
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { IUser } from '../../models/user.model';
-import { authActions } from '../actions/auth.actions';
+import { IUser } from '@fts-models';
+import { authActions } from '@fts-store/actions';
 
 export interface AuthState {
   user: IUser | null;
   error: AuthError | null;
 }
 
-export const initialState: AuthState = {
+const initialState: AuthState = {
   user: null,
   error: null,
 };

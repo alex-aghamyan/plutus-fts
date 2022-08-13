@@ -4,9 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../../environments/environment';
 import { reducers } from '../store';
-import { AuthEffects } from '../store/effects/auth.effects';
-import { LayoutEffects } from '../store/effects/layout.effects';
-import { MessageEffects } from '../store/effects/message.effects';
+import { AuthEffects, LayoutEffects, MessageEffects } from '@fts-store/effects';
 
 @NgModule({
   imports: [
