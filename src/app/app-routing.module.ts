@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, TitleStrategy } from '@angular/router';
+import { CustomTitleStrategyService } from '@fts-services';
 
 import { SignInComponent } from './features/sign-in/sign-in.component';
 
@@ -19,5 +20,11 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [
+    {
+      provide: TitleStrategy,
+      useClass: CustomTitleStrategyService,
+    },
+  ],
 })
 export class AppRoutingModule {}
