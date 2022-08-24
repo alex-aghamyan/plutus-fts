@@ -10,7 +10,15 @@
     </nz-sider>
     <nz-layout>
       <nz-content>
-        <router-outlet></router-outlet>
+        <fts-page-header
+          *ngIf="vm.pageHeader.pageTitle"
+          (addTransaction)="addIncomeOrExpense()"
+          [pageHeader]="vm.pageHeader"
+          [isMobileLayout]="vm.layout.isMobile"
+        ></fts-page-header>
+        <main [class.page-padding]="vm.user?.uid">
+          <router-outlet></router-outlet>
+        </main>
       </nz-content>
       <nz-footer *ngIf="vm.layout.isMobile && vm.user">
         <fts-main-menu *ngIf="openMenu"></fts-main-menu>
