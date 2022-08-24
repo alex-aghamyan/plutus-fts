@@ -1,0 +1,14 @@
+<nz-page-header>
+  <nz-page-header-title>
+    <h2 nz-typography>{{ pageHeader.pageTitle }}</h2>
+  </nz-page-header-title>
+  <nz-page-header-subtitle>
+    {{ pageHeader.pageSubtitle }}
+  </nz-page-header-subtitle>
+  <nz-page-header-extra *ngIf="!isMobileLayout">
+    <button (click)="emitAddingTransaction()" nz-button nzType="primary">
+      <i nz-icon nzType="plus"></i>
+      Add transaction
+    </button>
+  </nz-page-header-extra>
+</nz-page-header>

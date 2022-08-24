@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-info.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-
     FooterActionsComponent,
     MainMenuComponent,
     SiderUserInfoComponent,
+    PageHeaderComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule, NgZorroModule],
   exports: [LayoutComponent],
