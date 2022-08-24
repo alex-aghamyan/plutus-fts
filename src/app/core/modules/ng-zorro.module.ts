@@ -11,6 +11,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 
 @NgModule({
   exports: [
@@ -25,6 +26,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzSelectModule,
     NzDividerModule,
     NzMessageModule,
+    NzPageHeaderModule,
   ],
 })
 export class NgZorroModule {}
