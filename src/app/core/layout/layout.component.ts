@@ -31,8 +31,8 @@ export class LayoutComponent implements OnInit {
         this.toggleMenu();
         break;
 
-      case 'addIncomeOrExpense':
-        this.addIncomeOrExpense();
+      case 'addTransaction':
+        this.addTransaction();
         break;
 
       case 'openProfile':
@@ -45,7 +45,7 @@ export class LayoutComponent implements OnInit {
     this.openMenu = !this.openMenu;
   }
 
-  addIncomeOrExpense(): void {}
+  addTransaction(): void {}
 
   openProfile(): void {
     void this.router.navigate(['profile']);

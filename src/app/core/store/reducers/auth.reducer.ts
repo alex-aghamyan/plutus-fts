@@ -3,12 +3,12 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { IUser } from '@fts-models';
 import { authActions } from '@fts-store/actions';
 
-export interface AuthState {
+export interface IAuthState {
   user: IUser | null;
   error: AuthError | null;
 }
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   user: null,
   error: null,
 };
@@ -19,7 +19,7 @@ export const authFeature = createFeature({
     initialState,
     on(
       authActions.signInSuccess,
-      (state, action): AuthState => ({
+      (state, action): IAuthState => ({
         ...state,
         user: action.user,
         error: null,
@@ -27,7 +27,7 @@ export const authFeature = createFeature({
     ),
     on(
       authActions.signInFailure,
-      (state, action): AuthState => ({
+      (state, action): IAuthState => ({
         ...state,
         user: null,
         error: action.error,

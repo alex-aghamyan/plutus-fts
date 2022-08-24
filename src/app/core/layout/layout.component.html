@@ -12,7 +12,7 @@
       <nz-content>
         <fts-page-header
           *ngIf="vm.pageHeader.pageTitle"
-          (addTransaction)="addIncomeOrExpense()"
+          (addTransaction)="addTransaction()"
           [pageHeader]="vm.pageHeader"
           [isMobileLayout]="vm.layout.isMobile"
         ></fts-page-header>

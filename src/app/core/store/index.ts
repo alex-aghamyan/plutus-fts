@@ -1,20 +1,20 @@
 import { ActionReducerMap } from '@ngrx/store';
 import {
   authFeature,
-  AuthState,
+  IAuthState,
   layoutFeature,
-  LayoutState,
+  ILayoutState,
   pageHeaderFeature,
   IPageHeaderState,
 } from '@fts-store/reducers';
 
-export interface AppState {
-  [authFeature.name]: AuthState;
-  [layoutFeature.name]: LayoutState;
+export interface IAppState {
+  [authFeature.name]: IAuthState;
+  [layoutFeature.name]: ILayoutState;
   [pageHeaderFeature.name]: IPageHeaderState;
 }
 
-export const reducers: ActionReducerMap<AppState> = {
+export const reducers: ActionReducerMap<IAppState> = {
   [authFeature.name]: authFeature.reducer,
   [layoutFeature.name]: layoutFeature.reducer,
   [pageHeaderFeature.name]: pageHeaderFeature.reducer,
