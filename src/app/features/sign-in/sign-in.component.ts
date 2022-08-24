@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { authActions } from '@fts-store/actions';
-import { LayoutState } from '@fts-store/reducers';
+import { ILayoutState } from '@fts-store/reducers';
 import { selectLayout } from '@fts-store/selectors';
 
 @Component({
@@ -13,7 +13,7 @@ import { selectLayout } from '@fts-store/selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
-  layout$: Observable<LayoutState> = this.store.select(selectLayout);
+  layout$: Observable<ILayoutState> = this.store.select(selectLayout);
   userAgreementControl!: FormControl;
 
   constructor(private store: Store, private modal: NzModalService) {}

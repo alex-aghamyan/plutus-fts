@@ -1,1 +1,1 @@
-export type FooterAction = 'toggleMenu' | 'addIncomeOrExpense' | 'openProfile';
+export type FooterAction = 'toggleMenu' | 'addTransaction' | 'openProfile';
