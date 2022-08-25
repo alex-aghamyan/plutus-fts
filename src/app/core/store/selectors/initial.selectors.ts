@@ -1,11 +1,11 @@
 import { createSelector } from '@ngrx/store';
-import { selectUserViewModel } from './auth.selectors';
-import { selectLayout } from './layout.selectors';
-import { selectPageHeader } from './page-header.selectors';
+import { selectUser } from '@fts-store/reducers';
+import { selectLayoutState } from '@fts-store/reducers';
+import { selectPageHeaderState } from '@fts-store/reducers';
 
 export const selectInitialViewModel = createSelector(
-  selectLayout,
-  selectUserViewModel,
-  selectPageHeader,
+  selectLayoutState,
+  selectUser,
+  selectPageHeaderState,
   (layout, user, pageHeader) => ({ layout, user, pageHeader })
 );

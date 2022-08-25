@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectUserViewModel } from '@fts-store/selectors';
+import { selectUser } from '@fts-store/reducers';
 import { pageHeaderActions } from '@fts-store/actions';
 
 @Component({
@@ -10,7 +10,7 @@ import { pageHeaderActions } from '@fts-store/actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent implements OnInit {
-  user$ = this.store.select(selectUserViewModel);
+  user$ = this.store.select(selectUser);
 
   constructor(private store: Store) {}
 
