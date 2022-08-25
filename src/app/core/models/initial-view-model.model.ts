@@ -1,5 +1,5 @@
-import { IPageHeaderState } from '@fts-store/reducers';
-import { ILayoutState } from '../store/reducers/layout.reducer';
+import { IPageHeaderState } from '@fts-store/features';
+import { ILayoutState } from '../store/features/layout.feature';
 import { IUser } from './user.model';
 
 export interface IInitialViewModel {

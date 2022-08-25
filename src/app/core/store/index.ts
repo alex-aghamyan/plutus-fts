@@ -6,7 +6,7 @@ import {
   ILayoutState,
   pageHeaderFeature,
   IPageHeaderState,
-} from '@fts-store/reducers';
+} from '@fts-store/features';
 
 export interface IAppState {
   [authFeature.name]: IAuthState;

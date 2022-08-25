@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { IPageHeaderState } from '@fts-store/reducers';
+import { IPageHeaderState } from '@fts-store/features';
 
 @Component({
   selector: 'fts-page-header',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectUser } from '@fts-store/reducers';
+import { selectUser } from '@fts-store/features';
 import { pageHeaderActions } from '@fts-store/actions';
 
 @Component({

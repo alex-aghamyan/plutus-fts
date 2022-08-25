@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { authActions } from '@fts-store/actions';
-import { selectIsMobile } from '@fts-store/reducers';
+import { selectIsMobile } from '@fts-store/features';
 
 @Component({
   templateUrl: './sign-in.component.html',
