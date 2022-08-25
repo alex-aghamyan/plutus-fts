@@ -22,3 +22,5 @@ export const layoutFeature = createFeature({
     )
   ),
 });
+
+export const { selectLayoutState, selectIsMobile } = layoutFeature;

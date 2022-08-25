@@ -39,3 +39,5 @@ export const pageHeaderFeature = createFeature({
     )
   ),
 });
+
+export const { selectPageHeaderState, selectPageTitle, selectPageSubtitle } = pageHeaderFeature;
