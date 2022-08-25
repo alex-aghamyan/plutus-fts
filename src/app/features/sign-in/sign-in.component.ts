@@ -4,8 +4,7 @@ import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { authActions } from '@fts-store/actions';
-import { ILayoutState } from '@fts-store/reducers';
-import { selectLayout } from '@fts-store/selectors';
+import { selectIsMobile } from '@fts-store/features';
 
 @Component({
   templateUrl: './sign-in.component.html',
@@ -13,7 +12,7 @@ import { selectLayout } from '@fts-store/selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
-  layout$: Observable<ILayoutState> = this.store.select(selectLayout);
+  isMobileLayout$: Observable<boolean> = this.store.select(selectIsMobile);
   userAgreementControl!: FormControl;
 
   constructor(private store: Store, private modal: NzModalService) {}
