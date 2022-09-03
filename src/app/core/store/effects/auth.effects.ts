@@ -37,6 +37,8 @@ export class AuthEffects {
       ofType(appActions.loadApp),
       switchMap(() =>
         this.authService.getSignedInUser().pipe(
+          take(1),
+          filter((user) => !!user),
           map((user) =>
             authActions.signInSuccess({
               user: user,
