@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   user,
   User,
+  signOut,
 } from '@angular/fire/auth';
 import { from, map, Observable } from 'rxjs';
 import { IUser } from '@fts-models';
@@ -38,9 +39,13 @@ export class AuthService {
 
   signInWithGoogle(): Observable<IUser> {
     const provider = new GoogleAuthProvider();
-    
+
     return from(signInWithPopup(this.auth, provider)).pipe(
       map((userCredential) => this.mapRawUserData(userCredential.user))
     );
+  }
+
+  signOut(): Observable<void> {
+    return from(signOut(this.auth));
   }
 }

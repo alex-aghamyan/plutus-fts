@@ -23,7 +23,7 @@ export class MessageEffects {
   showError$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(authActions.signInFailure),
+        ofType(authActions.signInFailure, authActions.signOutFailure),
         tap((action) => {
           if (action.messageToShow) {
             this.message.error(action.messageToShow);
@@ -37,8 +37,12 @@ export class MessageEffects {
   showInfo$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(),
-        tap((action) => this.message.info(''))
+        ofType(authActions.signOutSuccess),
+        tap((action) => {
+          if (action.messageToShow) {
+            this.message.info(action.messageToShow);
+          }
+        })
       );
     },
     { dispatch: false }

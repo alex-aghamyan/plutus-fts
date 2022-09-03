@@ -32,6 +32,21 @@ export const authFeature = createFeature({
         user: null,
         error: action.error,
       })
+    ),
+    on(
+      authActions.signOutSuccess,
+      (state, action): IAuthState => ({
+        ...state,
+        user: action.user,
+        error: null,
+      })
+    ),
+    on(
+      authActions.signOutFailure,
+      (state, action): IAuthState => ({
+        ...state,
+        error: action.error,
+      })
     )
   ),
 });
