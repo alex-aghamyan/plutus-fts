@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
-import { authActions } from '@fts-store/actions';
+import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { selectIsMobile } from '@fts-store/features';
 
 @Component({
@@ -13,17 +13,13 @@ import { selectIsMobile } from '@fts-store/features';
 })
 export class SignInComponent implements OnInit {
   isMobileLayout$: Observable<boolean> = this.store.select(selectIsMobile);
-  userAgreementControl!: FormControl;
+  userAgreementControl = new FormControl<boolean>(false);
 
   constructor(private store: Store, private modal: NzModalService) {}
 
   ngOnInit(): void {
-    this.initUserAgreementControl();
+    this.store.dispatch(pageHeaderActions.setPageTitle({ pageTitle: '' }));
     this.openWarningDialog();
-  }
-
-  initUserAgreementControl(): void {
-    this.userAgreementControl = new FormControl(false);
   }
 
   openWarningDialog(): void {
@@ -41,7 +37,7 @@ export class SignInComponent implements OnInit {
         nzCentered: true,
         nzOnOk: () => true,
       })
-      .afterClose.subscribe((hasUserAgreed) => {
+      .afterClose.subscribe((hasUserAgreed: boolean) => {
         this.userAgreementControl.setValue(hasUserAgreed);
       });
   }
