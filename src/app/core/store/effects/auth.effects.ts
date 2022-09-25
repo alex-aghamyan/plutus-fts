@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AuthError } from '@angular/fire/auth';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, from, map, of, switchMap, take } from 'rxjs';
 import { AuthService } from '@fts-services';
 import { appActions, authActions } from '@fts-store/actions';
 import { Router } from '@angular/router';
+import { IUser } from '../../models/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -19,11 +19,10 @@ export class AuthEffects {
               messageToShow: 'Successfully signed in!',
             })
           ),
-          catchError((error: AuthError) =>
+          catchError(() =>
             of(
               authActions.signInFailure({
-                error: error,
-                messageToShow: error.code,
+                messageToShow: 'Error ocurred during sign in attempt.',
               })
             )
           )
@@ -38,7 +37,7 @@ export class AuthEffects {
       switchMap(() =>
         this.authService.getSignedInUser().pipe(
           take(1),
-          filter((user) => !!user),
+          filter((user): user is IUser => !!user),
           map((user) =>
             authActions.signInSuccess({
               user: user,
@@ -59,18 +58,15 @@ export class AuthEffects {
             return from(this.router.navigate(['sign-in'])).pipe(
               map(() => {
                 return authActions.signOutSuccess({
-                  user: null,
                   messageToShow: 'Signed out from the system.',
                 });
               })
             );
           }),
-          catchError((error: AuthError) =>
+          catchError(() =>
             of(
               authActions.signOutFailure({
-                error,
-                messageToShow:
-                  error.code || 'Error ocurred during sign out attempt.',
+                messageToShow: 'Error ocurred during sign out attempt.',
               })
             )
           )
