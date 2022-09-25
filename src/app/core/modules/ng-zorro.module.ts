@@ -12,6 +12,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   exports: [
@@ -27,6 +28,12 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     NzDividerModule,
     NzMessageModule,
     NzPageHeaderModule,
+  ],
+  providers: [
+    {
+      provide: NZ_I18N,
+      useValue: en_US,
+    },
   ],
 })
 export class NgZorroModule {}
