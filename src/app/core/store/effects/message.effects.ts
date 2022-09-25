@@ -10,11 +10,7 @@ export class MessageEffects {
     () => {
       return this.actions$.pipe(
         ofType(authActions.signInSuccess, authActions.profileUpdateSuccess),
-        tap((action) => {
-          if (action.messageToShow) {
-            this.message.success(action.messageToShow);
-          }
-        })
+        tap((action) => this.message.success(action.messageToShow))
       );
     },
     { dispatch: false }
@@ -28,11 +24,7 @@ export class MessageEffects {
           authActions.signOutFailure,
           authActions.profileUpdateFailure
         ),
-        tap((action) => {
-          if (action.messageToShow) {
-            this.message.error(action.messageToShow);
-          }
-        })
+        tap((action) => this.message.error(action.messageToShow))
       );
     },
     { dispatch: false }
@@ -42,11 +34,7 @@ export class MessageEffects {
     () => {
       return this.actions$.pipe(
         ofType(authActions.signOutSuccess),
-        tap((action) => {
-          if (action.messageToShow) {
-            this.message.info(action.messageToShow);
-          }
-        })
+        tap((action) => this.message.info(action.messageToShow))
       );
     },
     { dispatch: false }
