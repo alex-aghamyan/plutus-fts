@@ -20,6 +20,10 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  editUserDisplayName(displayName: string) {
+    this.store.dispatch(authActions.profileUpdateAttempt({ displayName }));
+  }
+
   signOut() {
     this.store.dispatch(authActions.signOutAttempt());
   }

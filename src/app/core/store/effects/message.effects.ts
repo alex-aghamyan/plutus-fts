@@ -9,7 +9,7 @@ export class MessageEffects {
   showSuccess$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(authActions.signInSuccess),
+        ofType(authActions.signInSuccess, authActions.profileUpdateSuccess),
         tap((action) => {
           if (action.messageToShow) {
             this.message.success(action.messageToShow);
@@ -23,7 +23,11 @@ export class MessageEffects {
   showError$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(authActions.signInFailure, authActions.signOutFailure),
+        ofType(
+          authActions.signInFailure,
+          authActions.signOutFailure,
+          authActions.profileUpdateFailure
+        ),
         tap((action) => {
           if (action.messageToShow) {
             this.message.error(action.messageToShow);

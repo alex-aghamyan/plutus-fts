@@ -6,8 +6,9 @@ import {
   user,
   User,
   signOut,
+  updateProfile,
 } from '@angular/fire/auth';
-import { from, map, Observable } from 'rxjs';
+import { filter, from, map, Observable, switchMap } from 'rxjs';
 import { IUser } from '@fts-models';
 
 @Injectable({
@@ -47,5 +48,19 @@ export class AuthService {
 
   signOut(): Observable<void> {
     return from(signOut(this.auth));
+  }
+
+  updateProfile(displayName?: string, photoURL?: string): Observable<IUser> {
+    return user(this.auth).pipe(
+      filter((currentUser): currentUser is User => !!currentUser),
+      switchMap((currentUser) => {
+        return from(updateProfile(currentUser, { displayName, photoURL }));
+      }),
+      switchMap(() =>
+        this.getSignedInUser().pipe(
+          filter((currentUser): currentUser is IUser => !!currentUser)
+        )
+      )
+    );
   }
 }
