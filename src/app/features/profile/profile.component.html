@@ -16,8 +16,11 @@
     <div>
       <h5 nz-typography>Display name:</h5>
       <span
-        nz-typography
+        (nzContentChange)="editUserDisplayName($event)"
         [nzContent]="user.displayName"
+        nzEditable
+        nzEditTooltip="Edit display name"
+        nz-typography
         class="name-edit"
       ></span>
     </div>

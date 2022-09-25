@@ -79,6 +79,31 @@ export class AuthEffects {
     );
   });
 
+  profileUpdate$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(authActions.profileUpdateAttempt),
+      switchMap((action) =>
+        this.authService
+          .updateProfile(action.displayName, action.photoURL)
+          .pipe(
+            map((user) =>
+              authActions.profileUpdateSuccess({
+                user,
+                messageToShow: 'Successfully updated!',
+              })
+            ),
+            catchError(() =>
+              of(
+                authActions.profileUpdateFailure({
+                  messageToShow: 'Something went wrong during profile update.',
+                })
+              )
+            )
+          )
+      )
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private authService: AuthService,
