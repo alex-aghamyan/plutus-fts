@@ -27,7 +27,9 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  editUserDisplayName(displayName: string) {
+  editUserDisplayName(value: string, currentDisplayName: string): void {
+    const displayName = value.trim();
+    if (displayName === currentDisplayName) return;
     this.store.dispatch(authActions.profileUpdateAttempt({ displayName }));
   }
 
@@ -61,7 +63,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  signOut() {
+  signOut(): void {
     this.store.dispatch(authActions.signOutAttempt());
   }
 }
