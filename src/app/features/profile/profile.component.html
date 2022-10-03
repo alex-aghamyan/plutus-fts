@@ -27,13 +27,25 @@
 
     <div>
       <h5 nz-typography>Change the photo:</h5>
-      <button nz-button>
-        <label for="upload-button">
-          <input hidden id="upload-button" type="file" />
-          <span nz-icon nzType="upload"></span>
-          Upload
-        </label>
+
+      <button (click)="fileSelectingInput.click()" nz-button>
+        <span nz-icon nzType="upload"></span>
+        Upload
       </button>
+      <input
+        (change)="changeUserPhoto($event, user.uid)"
+        #fileSelectingInput
+        hidden
+        id="upload-button"
+        type="file"
+      />
+      <div class="progress-bar">
+        <nz-progress
+          *ngIf="showPhotoUploadingProgress"
+          [nzPercent]="fileUploader.progress$ | async"
+          nzSize="small"
+        ></nz-progress>
+      </div>
     </div>
 
     <div>

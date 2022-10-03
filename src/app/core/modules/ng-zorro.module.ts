@@ -13,6 +13,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 
 @NgModule({
   exports: [
@@ -28,6 +29,7 @@ import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
     NzDividerModule,
     NzMessageModule,
     NzPageHeaderModule,
+    NzProgressModule,
   ],
   providers: [
     {
