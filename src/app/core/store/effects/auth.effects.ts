@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, filter, from, map, of, switchMap, take } from 'rxjs';
+import { catchError, filter, from, map, of, switchMap, take, tap } from 'rxjs';
 import { AuthService } from '@fts-services';
 import { appActions, authActions } from '@fts-store/actions';
 import { Router } from '@angular/router';
@@ -19,6 +19,11 @@ export class AuthEffects {
               messageToShow: 'Successfully signed in!',
             })
           ),
+          tap((action) => {
+            if (action.user.isNewUser) {
+              void this.router.navigate([{ outlets: { popup: 'welcome' } }]);
+            }
+          }),
           catchError(() =>
             of(
               authActions.signInFailure({
