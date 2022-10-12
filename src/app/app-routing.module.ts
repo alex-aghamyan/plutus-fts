@@ -22,6 +22,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/profile/profile.module').then((m) => m.ProfileModule),
     ...canActivate(redirectUnauthorizedToSignIn),
   },
+  {
+    path: 'welcome',
+    outlet: 'popup',
+    loadChildren: () => import('./features/welcome/welcome.module').then((m) => m.WelcomeModule),
+    ...canActivate(redirectUnauthorizedToSignIn),
+  },
 ];
 
 @NgModule({

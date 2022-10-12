@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '@fts-modules';
 import { NgZorroModule } from '@fts-modules';
 import { SettingsModule } from '../settings/settings.module';
 
-import { ProfileComponent } from './profile.component';
+import { WelcomeComponent } from './welcome.component';
 
-const routes: Routes = [{ path: '', component: ProfileComponent }];
+const routes: Routes = [{ path: '', component: WelcomeComponent }];
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [WelcomeComponent],
   imports: [
     CommonModule,
-    SharedModule,
-    NgZorroModule,
     RouterModule.forChild(routes),
+    NgZorroModule,
     SettingsModule,
   ],
 })
-export class ProfileModule {}
+export class WelcomeModule {}

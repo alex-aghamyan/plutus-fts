@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
-import { authActions } from '@fts-store/actions';
+import { authActions, userSettingsActions } from '@fts-store/actions';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable()
@@ -9,7 +9,11 @@ export class MessageEffects {
   showSuccess$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(authActions.signInSuccess, authActions.profileUpdateSuccess),
+        ofType(
+          authActions.signInSuccess,
+          authActions.profileUpdateSuccess,
+          userSettingsActions.setUserSettingsSuccess
+        ),
         tap((action) => this.message.success(action.messageToShow))
       );
     },
@@ -22,7 +26,9 @@ export class MessageEffects {
         ofType(
           authActions.signInFailure,
           authActions.signOutFailure,
-          authActions.profileUpdateFailure
+          authActions.profileUpdateFailure,
+          userSettingsActions.loadUserSettingsFailure,
+          userSettingsActions.setUserSettingsFailure
         ),
         tap((action) => this.message.error(action.messageToShow))
       );

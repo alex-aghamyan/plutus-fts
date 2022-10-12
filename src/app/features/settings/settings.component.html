@@ -1,0 +1,23 @@
+<div *ftsLet="settingsStore.settingsVM$ | async as vm">
+  <h5 nz-typography>Preferred currency:</h5>
+  <nz-select
+    (ngModelChange)="setPreferredCurrency($event)"
+    (nzOpenChange)="loadCurrencyList()"
+    [compareWith]="compareFn"
+    [ngModel]="vm.userSettings.preferredCurrency"
+    required
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a currency"
+  >
+    <nz-option
+      *ngFor="
+        let currency of vm.settingsFeatureState.currencyList;
+        trackBy: currencyListTrackBy
+      "
+      [nzLabel]="currency.name"
+      [nzValue]="currency"
+    >
+    </nz-option>
+  </nz-select>
+</div>
