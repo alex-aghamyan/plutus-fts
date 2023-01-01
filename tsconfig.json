@@ -16,7 +16,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2020",
@@ -28,7 +28,8 @@
       "@fts-services": ["src/app/core/services"],
       "@fts-store/*": ["src/app/core/store/*"],
       "@fts-guards": ["src/app/core/guards"]
-    }
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
