@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -5,18 +6,21 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { take } from 'rxjs';
+import { SettingsComponent } from '../settings/settings.component';
 
 @Component({
   selector: 'fts-welcome',
+  standalone: true,
+  imports: [CommonModule, SettingsComponent, NzModalModule],
   template: `
     <ng-template #modal>
       <fts-settings></fts-settings>
     </ng-template>
   `,
 })
-export class WelcomeComponent implements AfterViewInit {
+export default class WelcomeComponent implements AfterViewInit {
   @ViewChild('modal')
   modalTemplate!: TemplateRef<Record<string, unknown>>;
 

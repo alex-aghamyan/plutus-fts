@@ -24,7 +24,7 @@
     ],
     "paths": {
       "@fts-models": ["src/app/core/models"],
-      "@fts-modules": ["src/app/core/modules"],
+      "@fts-providers": ["src/app/core/providers"],
       "@fts-services": ["src/app/core/services"],
       "@fts-store/*": ["src/app/core/store/*"],
       "@fts-guards": ["src/app/core/guards"]

@@ -1,11 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ICurrency } from '@fts-models';
 import { userSettingsActions } from '@fts-store/actions';
 import { Store } from '@ngrx/store';
 import { SettingsStore } from './settings.store';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { FtsLetDirective } from '../../core/directives/let/let.directive';
 
 @Component({
   selector: 'fts-settings',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    FtsLetDirective,
+    NzTypographyModule,
+    NzSelectModule,
+  ],
   templateUrl: './settings.component.html',
   styles: [
     `
@@ -26,7 +39,9 @@ export class SettingsComponent {
 
   setPreferredCurrency(currency: ICurrency) {
     this.store.dispatch(
-      userSettingsActions.setUserSettings({ settings: { preferredCurrency: currency } })
+      userSettingsActions.setUserSettings({
+        settings: { preferredCurrency: currency },
+      })
     );
   }
 
