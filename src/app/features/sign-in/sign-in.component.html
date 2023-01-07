@@ -1,4 +1,4 @@
-<section class="container" [class.mobile-padding]="isMobileLayout$ | async">
+<section class="container" [class.mobile-padding]="isMobileLayout$ | ngrxPush">
   <h2 nz-typography>Plutus - your financial life all in one place</h2>
   <p nz-typography class="description">
     Money doesn't have to be messy. The Plutus finance tracking app will help

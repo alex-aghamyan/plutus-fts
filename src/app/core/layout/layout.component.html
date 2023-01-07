@@ -1,4 +1,4 @@
-<ng-container *ftsLet="initialViewModel$ | async as vm">
+<ng-container *ngrxLet="initialViewModel$ as vm">
   <nz-layout>
     <nz-sider
       *ngIf="!vm.layout.isMobile && vm.user"

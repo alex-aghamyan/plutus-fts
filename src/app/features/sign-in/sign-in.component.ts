@@ -10,6 +10,7 @@ import { FtsLetDirective } from '../../core/directives/let/let.directive';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { PushModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-sign-in',
@@ -22,6 +23,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
     NzButtonModule,
     NzCheckboxModule,
     NzModalModule,
+    PushModule,
   ],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],

@@ -8,6 +8,7 @@ import { SettingsStore } from './settings.store';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { FtsLetDirective } from '../../core/directives/let/let.directive';
+import { LetModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-settings',
@@ -18,6 +19,7 @@ import { FtsLetDirective } from '../../core/directives/let/let.directive';
     FtsLetDirective,
     NzTypographyModule,
     NzSelectModule,
+    LetModule,
   ],
   templateUrl: './settings.component.html',
   styles: [

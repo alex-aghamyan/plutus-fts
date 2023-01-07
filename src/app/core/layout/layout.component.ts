@@ -13,6 +13,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-info.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { LetModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-layout',
@@ -26,6 +27,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     PageHeaderComponent,
     SiderUserInfoComponent,
     NzLayoutModule,
+    LetModule,
   ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],

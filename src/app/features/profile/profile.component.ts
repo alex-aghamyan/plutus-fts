@@ -13,6 +13,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { LetModule, PushModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-profile',
@@ -27,6 +28,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzButtonModule,
     NzProgressModule,
     NzIconModule,
+    LetModule,
+    PushModule,
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
