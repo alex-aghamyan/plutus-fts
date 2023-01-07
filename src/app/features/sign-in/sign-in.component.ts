@@ -6,7 +6,6 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { selectIsMobile } from '@fts-store/features';
-import { FtsLetDirective } from '../../core/directives/let/let.directive';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
@@ -18,7 +17,6 @@ import { PushModule } from '@ngrx/component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FtsLetDirective,
     NzTypographyModule,
     NzButtonModule,
     NzCheckboxModule,

@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { SettingsStore } from './settings.store';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { FtsLetDirective } from '../../core/directives/let/let.directive';
 import { LetModule } from '@ngrx/component';
 
 @Component({
@@ -16,7 +15,6 @@ import { LetModule } from '@ngrx/component';
   imports: [
     CommonModule,
     FormsModule,
-    FtsLetDirective,
     NzTypographyModule,
     NzSelectModule,
     LetModule,

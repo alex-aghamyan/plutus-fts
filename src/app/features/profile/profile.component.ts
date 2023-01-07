@@ -6,7 +6,6 @@ import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { FileUploadService } from '@fts-services';
 import { IUploadProcess } from '@fts-models';
 import { SettingsComponent } from '../settings/settings.component';
-import { FtsLetDirective } from 'src/app/core/directives/let/let.directive';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
@@ -21,7 +20,6 @@ import { LetModule, PushModule } from '@ngrx/component';
   imports: [
     CommonModule,
     SettingsComponent,
-    FtsLetDirective,
     NzDividerModule,
     NzAvatarModule,
     NzTypographyModule,
