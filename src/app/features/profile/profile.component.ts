@@ -1,18 +1,39 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectUser } from '@fts-store/features';
 import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { FileUploadService } from '@fts-services';
 import { IUploadProcess } from '@fts-models';
+import { SettingsComponent } from '../settings/settings.component';
+import { FtsLetDirective } from 'src/app/core/directives/let/let.directive';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'fts-profile',
+  standalone: true,
+  imports: [
+    CommonModule,
+    SettingsComponent,
+    FtsLetDirective,
+    NzDividerModule,
+    NzAvatarModule,
+    NzTypographyModule,
+    NzButtonModule,
+    NzProgressModule,
+    NzIconModule,
+  ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [FileUploadService],
 })
-export class ProfileComponent implements OnInit {
+export default class ProfileComponent implements OnInit {
   user$ = this.store.select(selectUser);
   showPhotoUploadingProgress = false;
 
@@ -55,6 +76,7 @@ export class ProfileComponent implements OnInit {
           })
         );
       },
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       complete: async () => {
         const photoURL = await uploadProcess.getUploadedFileURL();
         this.store.dispatch(authActions.profileUpdateAttempt({ photoURL }));

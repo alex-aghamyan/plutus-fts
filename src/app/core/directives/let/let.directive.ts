@@ -9,6 +9,7 @@ import { FtsLetContext } from './let.context';
 
 @Directive({
   selector: '[ftsLet]',
+  standalone: true,
 })
 export class FtsLetDirective<T> implements OnInit {
   @Input('ftsLet')

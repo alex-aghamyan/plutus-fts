@@ -1,12 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { selectIsMobile } from '@fts-store/features';
+import { FtsLetDirective } from '../../core/directives/let/let.directive';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @Component({
+  selector: 'fts-sign-in',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FtsLetDirective,
+    NzTypographyModule,
+    NzButtonModule,
+    NzCheckboxModule,
+    NzModalModule,
+  ],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

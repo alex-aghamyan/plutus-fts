@@ -1,14 +1,32 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FooterAction } from '../models/footer-actions.model';
 import { IInitialViewModel } from '../models/initial-view-model.model';
 import { appActions } from '../store/actions/app.actions';
 import { selectInitialViewModel } from '../store/selectors/initial.selectors';
+import { FtsLetDirective } from '../directives/let/let.directive';
+import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-info.component';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 @Component({
   selector: 'fts-layout',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    FtsLetDirective,
+    MainMenuComponent,
+    FooterActionsComponent,
+    PageHeaderComponent,
+    SiderUserInfoComponent,
+    NzLayoutModule,
+  ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
