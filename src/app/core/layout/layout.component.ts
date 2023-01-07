@@ -7,12 +7,12 @@ import { FooterAction } from '../models/footer-actions.model';
 import { IInitialViewModel } from '../models/initial-view-model.model';
 import { appActions } from '../store/actions/app.actions';
 import { selectInitialViewModel } from '../store/selectors/initial.selectors';
-import { FtsLetDirective } from '../directives/let/let.directive';
 import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { SiderUserInfoComponent } from './components/sider-user-info/sider-user-info.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { LetModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-layout',
@@ -20,12 +20,12 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
   imports: [
     CommonModule,
     RouterModule,
-    FtsLetDirective,
     MainMenuComponent,
     FooterActionsComponent,
     PageHeaderComponent,
     SiderUserInfoComponent,
     NzLayoutModule,
+    LetModule,
   ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],

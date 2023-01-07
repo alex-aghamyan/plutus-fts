@@ -1,13 +1,13 @@
-<ng-container *ftsLet="user$ | async as user">
+<ng-container *ngrxLet="user$ as user">
   <nz-divider [nzText]="userDetails" nzOrientation="left">
     <ng-template #userDetails>
       <section class="user-details">
         <nz-avatar
-          [nzSrc]="user.photoURL"
+          [nzSrc]="user!.photoURL"
           [nzSize]="72"
           nzIcon="user"
         ></nz-avatar>
-        <h3 nz-typography class="margin-none">{{ user.displayName }}</h3>
+        <h3 nz-typography class="margin-none">{{ user!.displayName }}</h3>
       </section>
     </ng-template>
   </nz-divider>
@@ -16,8 +16,8 @@
     <div>
       <h5 nz-typography>Display name:</h5>
       <span
-        (nzContentChange)="editUserDisplayName($event, user.displayName)"
-        [nzContent]="user.displayName"
+        (nzContentChange)="editUserDisplayName($event, user!.displayName)"
+        [nzContent]="user!.displayName"
         nzEditable
         nzEditTooltip="Edit display name"
         nz-typography
@@ -33,7 +33,7 @@
         Upload
       </button>
       <input
-        (change)="changeUserPhoto($event, user.uid)"
+        (change)="changeUserPhoto($event, user!.uid!)"
         #fileSelectingInput
         hidden
         id="upload-button"
@@ -42,7 +42,7 @@
       <div class="progress-bar">
         <nz-progress
           *ngIf="showPhotoUploadingProgress"
-          [nzPercent]="fileUploader.progress$ | async"
+          [nzPercent]="fileUploader.progress$ | ngrxPush"
           nzSize="small"
         ></nz-progress>
       </div>

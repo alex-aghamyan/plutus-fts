@@ -1,4 +1,4 @@
-<div *ftsLet="settingsStore.settingsVM$ | async as vm">
+<div *ngrxLet="settingsStore.settingsVM$ as vm">
   <h5 nz-typography>Preferred currency:</h5>
   <nz-select
     (ngModelChange)="setPreferredCurrency($event)"

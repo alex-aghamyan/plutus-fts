@@ -6,13 +6,13 @@ import { authActions, pageHeaderActions } from '@fts-store/actions';
 import { FileUploadService } from '@fts-services';
 import { IUploadProcess } from '@fts-models';
 import { SettingsComponent } from '../settings/settings.component';
-import { FtsLetDirective } from 'src/app/core/directives/let/let.directive';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { LetModule, PushModule } from '@ngrx/component';
 
 @Component({
   selector: 'fts-profile',
@@ -20,13 +20,14 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   imports: [
     CommonModule,
     SettingsComponent,
-    FtsLetDirective,
     NzDividerModule,
     NzAvatarModule,
     NzTypographyModule,
     NzButtonModule,
     NzProgressModule,
     NzIconModule,
+    LetModule,
+    PushModule,
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
