@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Database, child, ref, get } from '@angular/fire/database';
 import { ICurrency } from '@fts-models';
 import { filter, from, map, Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { filter, from, map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CurrencyApiService {
-  constructor(private database: Database) {}
+  private readonly database = inject(Database);
 
   getCurrencyList(): Observable<ICurrency[]> {
     const dbRef = ref(this.database);

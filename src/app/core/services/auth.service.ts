@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   Auth,
   signInWithPopup,
@@ -16,7 +16,7 @@ import { IUser } from '@fts-models';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth) {}
+  private readonly auth = inject(Auth);
 
   private mapRawUserData(rawUserData: User & { isNewUser: boolean }): IUser {
     return {

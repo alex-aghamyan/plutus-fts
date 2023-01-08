@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, from, map, of, switchMap, take, tap } from 'rxjs';
 import { AuthService } from '@fts-services';
@@ -8,6 +8,10 @@ import { IUser } from '../../models/user.model';
 
 @Injectable()
 export class AuthEffects {
+  readonly actions$ = inject(Actions);
+  readonly authService = inject(AuthService);
+  readonly router = inject(Router);
+
   signIn$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.signInAttempt),
@@ -104,10 +108,4 @@ export class AuthEffects {
       )
     );
   });
-
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private router: Router
-  ) {}
 }

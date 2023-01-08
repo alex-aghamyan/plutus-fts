@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  inject,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -22,9 +23,10 @@ import { SettingsComponent } from '../settings/settings.component';
 })
 export default class WelcomeComponent implements AfterViewInit {
   @ViewChild('modal')
-  modalTemplate!: TemplateRef<Record<string, unknown>>;
-
-  constructor(private modal: NzModalService, private router: Router) {}
+  readonly modalTemplate!: TemplateRef<Record<string, unknown>>;
+  
+  readonly modal = inject(NzModalService);
+  readonly router = inject(Router);
 
   ngAfterViewInit(): void {
     this.modal

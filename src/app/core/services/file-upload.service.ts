@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   ref,
   Storage,
@@ -12,12 +12,12 @@ import { IUploadProcess } from '@fts-models';
 
 @Injectable()
 export class FileUploadService {
+  private readonly storage = inject(Storage);
+  
   private _progress$: Observable<number> = EMPTY;
   get progress$(): Observable<number> {
     return this._progress$;
   }
-
-  constructor(private storage: Storage) {}
 
   upload(file: File, uploadUrl: string): IUploadProcess {
     const formData: FormData = new FormData();

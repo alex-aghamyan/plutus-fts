@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   Firestore,
   getDoc,
@@ -13,7 +13,7 @@ import { from, map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(private firestore: Firestore) {}
+  private readonly firestore = inject(Firestore);
 
   getDoc(path: string): Observable<DocumentData | undefined> {
     const docRef = doc(this.firestore, path);

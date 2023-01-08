@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ICurrency } from '@fts-models';
 import { userSettingsActions } from '@fts-store/actions';
@@ -31,7 +31,8 @@ import { LetModule } from '@ngrx/component';
   providers: [SettingsStore],
 })
 export class SettingsComponent {
-  constructor(private store: Store, protected settingsStore: SettingsStore) {}
+  readonly store = inject(Store);
+  protected readonly settingsStore = inject(SettingsStore);
 
   loadCurrencyList(): void {
     this.settingsStore.loadCurrencyList();
