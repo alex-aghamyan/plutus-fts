@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { authActions, userSettingsActions } from '@fts-store/actions';
 import { selectUser, IUserSettingsState } from '@fts-store/features';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
@@ -9,6 +9,10 @@ import { IUser } from '@fts-models';
 
 @Injectable()
 export class UserSettingsEffects {
+  readonly actions$ = inject(Actions);
+  readonly firestore = inject(FirestoreService);
+  readonly store = inject(Store);
+  
   loadUserSettings$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.signInSuccess),
@@ -55,10 +59,4 @@ export class UserSettingsEffects {
       )
     );
   });
-
-  constructor(
-    private actions$: Actions,
-    private firestore: FirestoreService,
-    private store: Store
-  ) {}
 }

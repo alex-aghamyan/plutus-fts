@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ICurrency } from '@fts-models';
 import { selectUserSettingsState } from '@fts-store/features';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
@@ -18,6 +18,10 @@ const initialState: ISettingsFeatureState = {
 
 @Injectable()
 export class SettingsStore extends ComponentStore<ISettingsFeatureState> {
+  readonly store = inject(Store);
+  readonly currencyApiService = inject(CurrencyApiService);
+  readonly message = inject(NzMessageService);
+
   readonly settingsVM$: Observable<ISettingsFeatureVM> = this.select(
     this.store.select(selectUserSettingsState),
     this.select((state) => state),
@@ -46,11 +50,7 @@ export class SettingsStore extends ComponentStore<ISettingsFeatureState> {
     );
   });
 
-  constructor(
-    private store: Store,
-    private currencyApiService: CurrencyApiService,
-    private message: NzMessageService
-  ) {
+  constructor() {
     super(initialState);
   }
 }

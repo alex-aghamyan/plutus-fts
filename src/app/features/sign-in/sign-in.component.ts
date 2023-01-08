@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
@@ -28,10 +28,10 @@ import { PushModule } from '@ngrx/component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
-  isMobileLayout$: Observable<boolean> = this.store.select(selectIsMobile);
-  userAgreementControl = new FormControl<boolean>(false);
-
-  constructor(private store: Store, private modal: NzModalService) {}
+  readonly store = inject(Store);
+  readonly modal = inject(NzModalService);
+  readonly isMobileLayout$: Observable<boolean> = this.store.select(selectIsMobile);
+  readonly userAgreementControl = new FormControl<boolean>(false);
 
   ngOnInit(): void {
     this.store.dispatch(pageHeaderActions.setPageTitle({ pageTitle: '' }));

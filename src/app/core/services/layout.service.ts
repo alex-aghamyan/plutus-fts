@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   BreakpointObserver,
   BreakpointState,
@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LayoutService {
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  private readonly breakpointObserver = inject(BreakpointObserver);
+  
   observeHandset(): Observable<BreakpointState> {
     return this.breakpointObserver.observe(Breakpoints.Handset);
   }

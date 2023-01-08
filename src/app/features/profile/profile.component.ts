@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectUser } from '@fts-store/features';
 import { authActions, pageHeaderActions } from '@fts-store/actions';
@@ -35,13 +35,10 @@ import { LetModule, PushModule } from '@ngrx/component';
   providers: [FileUploadService],
 })
 export default class ProfileComponent implements OnInit {
-  user$ = this.store.select(selectUser);
   showPhotoUploadingProgress = false;
-
-  constructor(
-    private store: Store,
-    protected fileUploader: FileUploadService
-  ) {}
+  readonly store = inject(Store);
+  readonly user$ = this.store.select(selectUser);
+  protected readonly fileUploader = inject(FileUploadService);
 
   ngOnInit(): void {
     this.store.dispatch(

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
 import { authActions, userSettingsActions } from '@fts-store/actions';
@@ -6,6 +6,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable()
 export class MessageEffects {
+  readonly actions$ = inject(Actions);
+  readonly message = inject(NzMessageService);
+  
   showSuccess$ = createEffect(
     () => {
       return this.actions$.pipe(
@@ -55,6 +58,4 @@ export class MessageEffects {
     },
     { dispatch: false }
   );
-
-  constructor(private actions$: Actions, private message: NzMessageService) {}
 }

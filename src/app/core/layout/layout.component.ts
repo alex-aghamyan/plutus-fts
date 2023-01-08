@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -33,11 +33,11 @@ import { LetModule } from '@ngrx/component';
 })
 export class LayoutComponent implements OnInit {
   openMenu = false;
-  initialViewModel$: Observable<IInitialViewModel> = this.store.select(
+  readonly store = inject(Store);
+  readonly router = inject(Router);
+  readonly initialViewModel$: Observable<IInitialViewModel> = this.store.select(
     selectInitialViewModel
   );
-
-  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(appActions.loadApp());
