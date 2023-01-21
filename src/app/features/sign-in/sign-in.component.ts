@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
-import { pageHeaderActions } from '@fts-store/page-header';
+import { layoutActions } from '@fts-store/layout';
 import { authActions } from '@fts-store/auth';
 import { selectIsMobile } from '@fts-store/layout';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit {
   readonly userAgreementControl = new FormControl<boolean>(false);
 
   ngOnInit(): void {
-    this.store.dispatch(pageHeaderActions.setPageTitle({ pageTitle: '' }));
+    this.store.dispatch(layoutActions.setPageTitle({ pageTitle: '' }));
     this.openWarningDialog();
   }
 

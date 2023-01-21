@@ -6,7 +6,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { IPageHeaderState } from '@fts-store/page-header';
+import { IPageHeader } from '@fts-models';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
@@ -20,7 +20,7 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 })
 export class PageHeaderComponent {
   @Input()
-  pageHeader!: IPageHeaderState;
+  pageHeader!: IPageHeader;
 
   @Input()
   isMobileLayout = false;
