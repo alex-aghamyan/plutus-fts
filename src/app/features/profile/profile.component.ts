@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { authActions, selectUser } from '@fts-store/auth';
-import { pageHeaderActions } from '@fts-store/page-header';
+import { layoutActions } from '@fts-store/layout';
 import { FileUploadService } from '@fts-services';
 import { IUploadProcess } from '@fts-models';
 import { SettingsComponent } from '../settings/settings.component';
@@ -42,7 +42,7 @@ export default class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(
-      pageHeaderActions.setPageTitle({ pageTitle: 'Profile' })
+      layoutActions.setPageTitle({ pageTitle: 'Profile' })
     );
   }
 

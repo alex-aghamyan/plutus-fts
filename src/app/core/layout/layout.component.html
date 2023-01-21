@@ -11,9 +11,9 @@
     <nz-layout>
       <nz-content>
         <fts-page-header
-          *ngIf="vm.pageHeader.pageTitle"
+          *ngIf="vm.layout.pageHeader.pageTitle"
           (addTransaction)="addTransaction()"
-          [pageHeader]="vm.pageHeader"
+          [pageHeader]="vm.layout.pageHeader"
           [isMobileLayout]="vm.layout.isMobile"
         ></fts-page-header>
         <main [class.page-padding]="vm.user?.uid">
