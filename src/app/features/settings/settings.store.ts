@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ICurrency } from '@fts-models';
-import { selectUserSettingsState } from '@fts-store/user-settings';
+import { userSettingsFeature } from '@fts-store/user-settings';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Store } from '@ngrx/store';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -23,7 +23,7 @@ export class SettingsStore extends ComponentStore<ISettingsFeatureState> {
   readonly message = inject(NzMessageService);
 
   readonly settingsVM$: Observable<ISettingsFeatureVM> = this.select(
-    this.store.select(selectUserSettingsState),
+    this.store.select(userSettingsFeature.selectUserSettingsState),
     this.select((state) => state),
     (userSettings, settingsFeatureState) => ({
       userSettings,

@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { selectUser } from '@fts-store/auth';
-import { selectLayoutState } from '@fts-store/layout';
+import { authFeature } from '@fts-store/auth';
+import { layoutFeature } from '@fts-store/layout';
 
 export const selectInitialViewModel = createSelector(
-  selectLayoutState,
-  selectUser,
+  layoutFeature.selectLayoutState,
+  authFeature.selectUser,
   (layout, user) => ({ layout, user })
 );

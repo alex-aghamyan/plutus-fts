@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { authActions, selectUser } from '@fts-store/auth';
+import { authActions, authFeature } from '@fts-store/auth';
 import { userSettingsActions } from './user-settings.actions';
 import { IUserSettingsState } from './user-settings.feature';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
@@ -40,7 +40,7 @@ export class UserSettingsEffects {
       ofType(userSettingsActions.setUserSettings),
       concatLatestFrom(() =>
         this.store
-          .select(selectUser)
+          .select(authFeature.selectUser)
           .pipe(filter((user): user is IUser => !!user))
       ),
       switchMap(([action, user]) =>

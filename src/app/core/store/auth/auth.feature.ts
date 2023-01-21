@@ -32,5 +32,3 @@ export const authFeature = createFeature({
     ),
   ),
 });
-
-export const { selectAuthState, selectUser } = authFeature;

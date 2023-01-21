@@ -29,5 +29,3 @@ export const userSettingsFeature = createFeature({
     )
   ),
 });
-
-export const { selectUserSettingsState, selectPreferredCurrency } = userSettingsFeature;
