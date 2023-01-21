@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ICurrency } from '@fts-models';
-import { userSettingsActions } from '@fts-store/actions';
+import { userSettingsActions } from '@fts-store/user-settings';
 import { Store } from '@ngrx/store';
 import { SettingsStore } from './settings.store';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';

@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { pageHeaderActions } from '@fts-store/actions';
+import { pageHeaderActions } from './page-header.actions';
 
 export interface IPageHeaderState {
   pageTitle: string;

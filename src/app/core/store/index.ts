@@ -1,14 +1,8 @@
 import { ActionReducerMap } from '@ngrx/store';
-import {
-  authFeature,
-  IAuthState,
-  layoutFeature,
-  ILayoutState,
-  pageHeaderFeature,
-  IPageHeaderState,
-  userSettingsFeature,
-  IUserSettingsState,
-} from '@fts-store/features';
+import { authFeature, IAuthState } from './auth';
+import { layoutFeature, ILayoutState } from './layout';
+import { pageHeaderFeature, IPageHeaderState } from './page-header';
+import { userSettingsFeature, IUserSettingsState } from './user-settings';
 
 export interface IAppState {
   [authFeature.name]: IAuthState;

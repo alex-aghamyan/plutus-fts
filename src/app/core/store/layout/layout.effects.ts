@@ -2,7 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { LayoutService } from '@fts-services';
-import { appActions, layoutActions } from '@fts-store/actions';
+import { coreActions } from '../core/core.actions';
+import { layoutActions } from './layout.actions';
+
 
 @Injectable()
 export class LayoutEffects {
@@ -11,7 +13,7 @@ export class LayoutEffects {
   
   watchIsMobileLayout$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(appActions.loadApp),
+      ofType(coreActions.loadApp),
       switchMap(() =>
         this.layoutService
           .observeHandset()

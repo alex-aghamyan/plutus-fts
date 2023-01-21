@@ -1,4 +1,4 @@
-import { IPageHeaderState } from '@fts-store/features';
+import { IPageHeaderState } from './page-header.feature';
 import { createActionGroup, props } from '@ngrx/store';
 
 export const pageHeaderActions = createActionGroup({
