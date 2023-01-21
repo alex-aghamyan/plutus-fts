@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ICurrency } from '@fts-models';
 import { userSettingsActions } from '@fts-store/user-settings';
 import { Store } from '@ngrx/store';
-import { SettingsStore } from './settings.store';
+import { SettingsStore } from './data-access/settings.store';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { LetModule } from '@ngrx/component';

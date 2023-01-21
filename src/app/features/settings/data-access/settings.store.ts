@@ -5,8 +5,8 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Store } from '@ngrx/store';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable } from 'rxjs';
-import { ISettingsFeatureVM } from './models/settings-vm.model';
-import { CurrencyApiService } from './services/currency-api.service';
+import { ISettingsFeatureVM } from '../models/settings-vm.model';
+import { CurrencyApiService } from './currency-api.service';
 
 export interface ISettingsFeatureState {
   currencyList: ICurrency[];
