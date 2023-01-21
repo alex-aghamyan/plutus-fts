@@ -1,14 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { authActions } from '../auth/auth.actions';
+import { userSettingsActions } from '../user-settings/user-settings.actions';
 import { tap } from 'rxjs';
-import { authActions, userSettingsActions } from '@fts-store/actions';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable()
-export class MessageEffects {
+export class NzMessageEffects {
   readonly actions$ = inject(Actions);
   readonly message = inject(NzMessageService);
-  
+
   showSuccess$ = createEffect(
     () => {
       return this.actions$.pipe(

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { authActions, userSettingsActions } from '@fts-store/actions';
-import { selectUser, IUserSettingsState } from '@fts-store/features';
+import { authActions, selectUser } from '@fts-store/auth';
+import { userSettingsActions } from './user-settings.actions';
+import { IUserSettingsState } from './user-settings.feature';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, filter, map, of, switchMap } from 'rxjs';
@@ -12,14 +13,16 @@ export class UserSettingsEffects {
   readonly actions$ = inject(Actions);
   readonly firestore = inject(FirestoreService);
   readonly store = inject(Store);
-  
+
   loadUserSettings$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.signInSuccess),
       switchMap((action) =>
         this.firestore.getDoc(`settings/${action.user.uid}`).pipe(
           filter((data): data is IUserSettingsState => !!data),
-          map((settings) => userSettingsActions.loadUserSettingsSuccess({ settings })),
+          map((settings) =>
+            userSettingsActions.loadUserSettingsSuccess({ settings })
+          ),
           catchError(() =>
             of(
               userSettingsActions.loadUserSettingsFailure({

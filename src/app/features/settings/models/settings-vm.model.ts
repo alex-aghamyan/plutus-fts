@@ -1,4 +1,4 @@
-import { IUserSettingsState } from '@fts-store/features';
+import { IUserSettingsState } from '@fts-store/user-settings';
 import { ISettingsFeatureState } from '../settings.store';
 
 export interface ISettingsFeatureVM {

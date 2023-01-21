@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectUser } from '@fts-store/features';
-import { authActions, pageHeaderActions } from '@fts-store/actions';
+import { authActions, selectUser } from '@fts-store/auth';
+import { pageHeaderActions } from '@fts-store/page-header';
 import { FileUploadService } from '@fts-services';
 import { IUploadProcess } from '@fts-models';
 import { SettingsComponent } from '../settings/settings.component';

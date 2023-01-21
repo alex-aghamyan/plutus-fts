@@ -1,6 +1,6 @@
 import { createActionGroup, props } from '@ngrx/store';
 import { IMessageToShow } from '@fts-models';
-import { IUserSettingsState } from '@fts-store/features';
+import { IUserSettingsState } from './user-settings.feature';
 
 export const userSettingsActions = createActionGroup({
   source: 'User Settings',

@@ -1,6 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { IUser } from '@fts-models';
-import { authActions } from '@fts-store/actions';
+import { authActions } from './auth.actions';
 
 export interface IAuthState {
   user: IUser | null;

@@ -2,7 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, from, map, of, switchMap, take, tap } from 'rxjs';
 import { AuthService } from '@fts-services';
-import { appActions, authActions } from '@fts-store/actions';
+import { coreActions } from '../core/core.actions';
+import { authActions } from './auth.actions';
 import { Router } from '@angular/router';
 import { IUser } from '../../models/user.model';
 
@@ -42,7 +43,7 @@ export class AuthEffects {
 
   setUserIfExists$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(appActions.loadApp),
+      ofType(coreActions.loadApp),
       switchMap(() =>
         this.authService.getSignedInUser().pipe(
           take(1),

@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { layoutActions } from '@fts-store/actions';
+import { layoutActions } from './layout.actions';
 
 export interface ILayoutState {
   isMobile: boolean;

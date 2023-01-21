@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ICurrency } from '@fts-models';
-import { selectUserSettingsState } from '@fts-store/features';
+import { selectUserSettingsState } from '@fts-store/user-settings';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Store } from '@ngrx/store';
 import { NzMessageService } from 'ng-zorro-antd/message';

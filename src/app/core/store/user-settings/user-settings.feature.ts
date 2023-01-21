@@ -1,4 +1,4 @@
-import { userSettingsActions } from '@fts-store/actions';
+import { userSettingsActions } from './user-settings.actions';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { ICurrency } from '@fts-models';
 

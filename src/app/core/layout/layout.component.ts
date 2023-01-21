@@ -5,8 +5,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FooterAction } from '../models/footer-actions.model';
 import { IInitialViewModel } from '../models/initial-view-model.model';
-import { appActions } from '../store/actions/app.actions';
-import { selectInitialViewModel } from '../store/selectors/initial.selectors';
+import { coreActions } from '@fts-store/core';
+import { selectInitialViewModel } from '@fts-store/core';
 import { FooterActionsComponent } from './components/footer-actions/footer-actions.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -40,7 +40,7 @@ export class LayoutComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.store.dispatch(appActions.loadApp());
+    this.store.dispatch(coreActions.loadApp());
   }
 
   handleFooterAction(action: FooterAction): void {
