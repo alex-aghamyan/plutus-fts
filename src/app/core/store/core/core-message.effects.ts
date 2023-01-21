@@ -18,7 +18,7 @@ export class NzMessageEffects {
           authActions.profileUpdateSuccess,
           userSettingsActions.setUserSettingsSuccess
         ),
-        tap((action) => this.message.success(action.messageToShow))
+        tap(({ messageToShow }) => this.message.success(messageToShow))
       );
     },
     { dispatch: false }
@@ -34,7 +34,7 @@ export class NzMessageEffects {
           userSettingsActions.loadUserSettingsFailure,
           userSettingsActions.setUserSettingsFailure
         ),
-        tap((action) => this.message.error(action.messageToShow))
+        tap(({ messageToShow }) => this.message.error(messageToShow))
       );
     },
     { dispatch: false }
@@ -44,7 +44,7 @@ export class NzMessageEffects {
     () => {
       return this.actions$.pipe(
         ofType(authActions.signOutSuccess),
-        tap((action) => this.message.info(action.messageToShow))
+        tap(({ messageToShow }) => this.message.info(messageToShow))
       );
     },
     { dispatch: false }
@@ -54,7 +54,7 @@ export class NzMessageEffects {
     () => {
       return this.actions$.pipe(
         ofType(),
-        tap((action) => this.message.warning(''))
+        tap(({ messageToShow }) => this.message.warning(messageToShow))
       );
     },
     { dispatch: false }

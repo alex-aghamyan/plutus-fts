@@ -24,8 +24,8 @@ export class AuthEffects {
               messageToShow: 'Successfully signed in!',
             })
           ),
-          tap((action) => {
-            if (action.user.isNewUser) {
+          tap(({ user }) => {
+            if (user.isNewUser) {
               void this.router.navigate([{ outlets: { popup: 'welcome' } }]);
             }
           }),
@@ -88,9 +88,9 @@ export class AuthEffects {
   profileUpdate$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.profileUpdateAttempt),
-      switchMap((action) =>
+      switchMap(({ displayName, photoURL }) =>
         this.authService
-          .updateProfile(action.displayName, action.photoURL)
+          .updateProfile(displayName, photoURL)
           .pipe(
             map((user) =>
               authActions.profileUpdateSuccess({

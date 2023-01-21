@@ -17,9 +17,9 @@ export const authFeature = createFeature({
     on(
       authActions.signInSuccess,
       authActions.profileUpdateSuccess,
-      (state, action): IAuthState => ({
+      (state, { user }): IAuthState => ({
         ...state,
-        user: action.user,
+        user,
       })
     ),
     on(
@@ -32,5 +32,3 @@ export const authFeature = createFeature({
     ),
   ),
 });
-
-export const { selectAuthState, selectUser } = authFeature;

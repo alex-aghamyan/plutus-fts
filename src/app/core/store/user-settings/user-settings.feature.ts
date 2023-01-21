@@ -22,12 +22,10 @@ export const userSettingsFeature = createFeature({
     on(
       userSettingsActions.loadUserSettingsSuccess,
       userSettingsActions.setUserSettingsSuccess,
-      (state, action): IUserSettingsState => ({
+      (state, { settings }): IUserSettingsState => ({
         ...state,
-        ...action.settings,
+        ...settings,
       })
     )
   ),
 });
-
-export const { selectUserSettingsState, selectPreferredCurrency } = userSettingsFeature;

@@ -6,7 +6,7 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { layoutActions } from '@fts-store/layout';
 import { authActions } from '@fts-store/auth';
-import { selectIsMobile } from '@fts-store/layout';
+import { layoutFeature } from '@fts-store/layout';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
@@ -31,7 +31,7 @@ import { PushModule } from '@ngrx/component';
 export class SignInComponent implements OnInit {
   readonly store = inject(Store);
   readonly modal = inject(NzModalService);
-  readonly isMobileLayout$: Observable<boolean> = this.store.select(selectIsMobile);
+  readonly isMobileLayout$: Observable<boolean> = this.store.select(layoutFeature.selectIsMobile);
   readonly userAgreementControl = new FormControl<boolean>(false);
 
   ngOnInit(): void {
