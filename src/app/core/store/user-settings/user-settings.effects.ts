@@ -17,8 +17,8 @@ export class UserSettingsEffects {
   loadUserSettings$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.signInSuccess),
-      switchMap((action) =>
-        this.firestore.getDoc(`settings/${action.user.uid}`).pipe(
+      switchMap(({ user }) =>
+        this.firestore.getDoc(`settings/${user.uid}`).pipe(
           filter((data): data is IUserSettingsState => !!data),
           map((settings) =>
             userSettingsActions.loadUserSettingsSuccess({ settings })
@@ -43,11 +43,11 @@ export class UserSettingsEffects {
           .select(authFeature.selectUser)
           .pipe(filter((user): user is IUser => !!user))
       ),
-      switchMap(([action, user]) =>
-        this.firestore.setDoc(`settings/${user.uid}`, action.settings).pipe(
+      switchMap(([{ settings }, user]) =>
+        this.firestore.setDoc(`settings/${user.uid}`, settings).pipe(
           map(() =>
             userSettingsActions.setUserSettingsSuccess({
-              settings: action.settings,
+              settings,
               messageToShow: 'Settings has been updated!',
             })
           ),

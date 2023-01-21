@@ -21,38 +21,38 @@ export const layoutFeature = createFeature({
     initialState,
     on(
       layoutActions.setIsMobileLayout,
-      (state, action): ILayoutState => ({
+      (state, { isMobile }): ILayoutState => ({
         ...state,
-        isMobile: action.isMobile,
+        isMobile,
       })
     ),
     on(
       layoutActions.setPageHeader,
-      (state, action): ILayoutState => ({
+      (state, { pageTitle, pageSubtitle }): ILayoutState => ({
         ...state,
         pageHeader: {
-          pageTitle: action.pageTitle,
-          pageSubtitle: action.pageSubtitle,
+          pageTitle,
+          pageSubtitle,
         },
       })
     ),
     on(
       layoutActions.setPageTitle,
-      (state, action): ILayoutState => ({
+      (state, { pageTitle }): ILayoutState => ({
         ...state,
         pageHeader: {
           ...state.pageHeader,
-          pageTitle: action.pageTitle,
+          pageTitle,
         },
       })
     ),
     on(
       layoutActions.setPageSubtitle,
-      (state, action): ILayoutState => ({
+      (state, { pageSubtitle }): ILayoutState => ({
         ...state,
         pageHeader: {
           ...state.pageHeader,
-          pageSubtitle: action.pageSubtitle,
+          pageSubtitle,
         },
       })
     )

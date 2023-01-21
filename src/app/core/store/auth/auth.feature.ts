@@ -17,9 +17,9 @@ export const authFeature = createFeature({
     on(
       authActions.signInSuccess,
       authActions.profileUpdateSuccess,
-      (state, action): IAuthState => ({
+      (state, { user }): IAuthState => ({
         ...state,
-        user: action.user,
+        user,
       })
     ),
     on(
