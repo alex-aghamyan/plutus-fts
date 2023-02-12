@@ -16,12 +16,12 @@ export class FirestoreService {
   private readonly firestore = inject(Firestore);
 
   getDoc(path: string): Observable<DocumentData | undefined> {
-    const docRef = doc(this.firestore, path);
+    const docRef = doc(this.firestore, `users/${path}`);
     return from(getDoc(docRef)).pipe(map((doc) => doc.data()));
   }
 
-  setDoc(path: string, data: WithFieldValue<DocumentData>): Observable<void> {
-    const docRef = doc(this.firestore, path);
+  setDoc(path: string, data?: WithFieldValue<DocumentData>): Observable<void> {
+    const docRef = doc(this.firestore, `users/${path}`);
     return from(setDoc(docRef, data));
   }
 }

@@ -11,16 +11,16 @@ import { IUser } from '@fts-models';
 @Injectable()
 export class UserSettingsEffects {
   readonly actions$ = inject(Actions);
-  readonly firestore = inject(FirestoreService);
+  readonly firestoreService = inject(FirestoreService);
   readonly store = inject(Store);
 
   loadUserSettings$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.signInSuccess),
       switchMap(({ user }) =>
-        this.firestore.getDoc(`settings/${user.uid}`).pipe(
+        this.firestoreService.getDoc(`${user.uid}`).pipe(
           filter((data): data is IUserSettingsState => !!data),
-          map((settings) =>
+          map((settings) => 
             userSettingsActions.loadUserSettingsSuccess({ settings })
           ),
           catchError(() =>
@@ -44,7 +44,7 @@ export class UserSettingsEffects {
           .pipe(filter((user): user is IUser => !!user))
       ),
       switchMap(([{ settings }, user]) =>
-        this.firestore.setDoc(`settings/${user.uid}`, settings).pipe(
+        this.firestoreService.setDoc(`${user.uid}`, settings).pipe(
           map(() =>
             userSettingsActions.setUserSettingsSuccess({
               settings,
