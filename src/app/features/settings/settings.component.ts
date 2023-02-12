@@ -51,6 +51,8 @@ export class SettingsComponent {
   }
 
   compareFn(optionOne: ICurrency, optionTwo: ICurrency): boolean {
-    return optionOne.id === optionTwo.id;
+    return optionOne && optionTwo
+      ? optionOne.id === optionTwo.id
+      : optionOne === optionTwo;
   }
 }
