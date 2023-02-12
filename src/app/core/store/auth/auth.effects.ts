@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, from, map, of, switchMap, take, tap } from 'rxjs';
-import { AuthService } from '@fts-services';
+import { AuthService, FirestoreService } from '@fts-services';
 import { coreActions } from '../core/core.actions';
 import { authActions } from './auth.actions';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ export class AuthEffects {
   readonly actions$ = inject(Actions);
   readonly authService = inject(AuthService);
   readonly router = inject(Router);
+  readonly firestoreService = inject(FirestoreService);
 
   signIn$ = createEffect(() => {
     return this.actions$.pipe(
@@ -40,6 +41,17 @@ export class AuthEffects {
       )
     );
   });
+
+  registerNewUserInFirestore$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(authActions.signInSuccess),
+        filter(({ user }) => user.isNewUser),
+        switchMap(({ user }) => this.firestoreService.setDoc(user.uid))
+      );
+    },
+    { dispatch: false }
+  );
 
   setUserIfExists$ = createEffect(() => {
     return this.actions$.pipe(
@@ -89,23 +101,21 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(authActions.profileUpdateAttempt),
       switchMap(({ displayName, photoURL }) =>
-        this.authService
-          .updateProfile(displayName, photoURL)
-          .pipe(
-            map((user) =>
-              authActions.profileUpdateSuccess({
-                user,
-                messageToShow: 'Successfully updated!',
+        this.authService.updateProfile(displayName, photoURL).pipe(
+          map((user) =>
+            authActions.profileUpdateSuccess({
+              user,
+              messageToShow: 'Successfully updated!',
+            })
+          ),
+          catchError(() =>
+            of(
+              authActions.profileUpdateFailure({
+                messageToShow: 'Something went wrong during profile update.',
               })
-            ),
-            catchError(() =>
-              of(
-                authActions.profileUpdateFailure({
-                  messageToShow: 'Something went wrong during profile update.',
-                })
-              )
             )
           )
+        )
       )
     );
   });
